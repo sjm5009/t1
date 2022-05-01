@@ -5,13 +5,13 @@ const Header = (props) => {
   return (
     <div>
       <header>
-        <div class={style.section}>
+        <div className={style.section}>
           <img
             src="https://media.graphcms.com/iiMXVGjRRh6lhUc8Zmfy"
             alt="t1_logo"
-            class={style.logo}
+            className={style.logo}
           />
-          <ul class={style.menuList}>
+          <ul className={style.menuList}>
             <li>
               <a href="#">APPAREL</a>
             </li>
@@ -25,14 +25,14 @@ const Header = (props) => {
               <a href="#">COLLABORATION</a>
             </li>
           </ul>
-          <div class={style.cartSection}>
+          <div className={style.cartSection}>
             <img
               src="../img/cart/cart-solid.png"
               alt="cart"
-              class={style.cart}
+              className={style.cart}
             />
             <span>Cart</span>
-            <span class={style.count}>0</span>
+            <span className={style.count}>0</span>
           </div>
         </div>
       </header>
