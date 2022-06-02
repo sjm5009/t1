@@ -1,12 +1,20 @@
 import React from "react";
+import { Route } from "react-router-dom";
+import styles from "./goods_list.module.css";
 
 const GoodsList = ({ goods }) => {
   return (
     <>
-      <li>ID : {goods.goodsId}</li>
-      <li>상품명 : {goods.title}</li>
-      <li>가격 : {goods.price}</li>
-      <li>설명 : {goods.desc}</li>
+      <li>
+        <a>
+          <div className={styles.container}>
+            <img src={goods.fileUrl} alt="" />
+            <p>상품명 {goods.title}</p>
+            <p>가격 {goods.price}</p>
+            <p>설명 {goods.desc}</p>
+          </div>
+        </a>
+      </li>
     </>
   );
 };

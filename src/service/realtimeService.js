@@ -1,11 +1,12 @@
-import { getDatabase, ref, set } from "firebase/database";
+import { getDatabase, ref, set, onValue } from "firebase/database";
 
 class DbService {
-  constructor() {}
+  constructor() {
+    this.db = getDatabase();
+  }
 
   writeUserData(userId, name, email) {
-    const db = getDatabase();
-    set(ref(db, "users/" + userId), {
+    set(ref(this.db, "users/" + userId), {
       username: name,
       email: email,
     })
@@ -17,6 +18,27 @@ class DbService {
         // The write failed...
         alert("The write failed...");
       });
+  }
+
+  saveGoodsInfo(goods) {
+    console.log(goods);
+    set(ref(this.db, "goods/" + goods.goodsId), goods)
+      .then(() => {
+        // Data saved successfully!
+        alert("Data saved successfully!");
+      })
+      .catch((error) => {
+        // The write failed...
+        alert("The write failed...");
+      });
+  }
+
+  readGoods(onUpdate) {
+    const starCountRef = ref(this.db, "goods/");
+    onValue(starCountRef, (snapshot) => {
+      const data = snapshot.val();
+      onUpdate(data);
+    });
   }
 }
 

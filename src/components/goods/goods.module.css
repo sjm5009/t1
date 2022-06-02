@@ -1,0 +1,13 @@
+.wrap {
+  margin: auto;
+  width: 1400px;
+  background-color: antiquewhite;
+}
+
+.container {
+  list-style: none;
+  display: grid;
+  justify-items: center;
+  /* flex-wrap: wrap; */
+  grid-template-columns: repeat(3, 1fr);
+}

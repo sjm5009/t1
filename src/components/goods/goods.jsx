@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import GoodsAddForm from "../goods_add_form/GoodsAddForm";
 import GoodsList from "../goods_list/goods_list";
+import styles from "./goods.module.css";
 
 const Goods = ({ dbService, imageService }) => {
   const [goods, setGoods] = useState({});
@@ -21,14 +22,14 @@ const Goods = ({ dbService, imageService }) => {
   }, [dbService]);
 
   return (
-    <div>
-      <GoodsAddForm
+    <div className={styles.wrap}>
+      {/* <GoodsAddForm
         dbService={dbService}
         imageService={imageService}
         saveGoods={saveGoods}
-      />
+      /> */}
 
-      <ul>
+      <ul className={styles.container}>
         {Object.keys(goods).map((key) => (
           <GoodsList goods={goods[key]} />
         ))}

@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
-import ImageButton from "../button/imageButton";
-import style from "./goodsAddForm.module.css";
+import ImageButton from "../button/ImageButton";
+import styles from "./goods_add_form.module.css";
 
 const GoodsAddForm = ({ dbService, imageService, saveGoods }) => {
   let titleRef = useRef();
@@ -20,7 +20,7 @@ const GoodsAddForm = ({ dbService, imageService, saveGoods }) => {
       fileUrl: file.fileUrl || "",
     };
 
-    await dbService.saveGoodsInfo();
+    await dbService.saveGoodsInfo(tempGoods);
     saveGoods(tempGoods);
   };
 
