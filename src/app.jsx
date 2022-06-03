@@ -8,7 +8,7 @@ import AuthService from "./service/authService";
 import ImageService from "./service/ImageSerivece";
 import Goods from "./components/goods/goods";
 import Footer from "./components/footer/footer";
-import AdminHeader from "./components/admin/header/header";
+import GoodsAddForm from "./components/goods_add_form/goods_add_form";
 
 const dbService = new DbService();
 const authService = new AuthService();
@@ -28,13 +28,20 @@ function App() {
 
   return (
     <BrowserRouter>
-      <AdminHeader />
       <Routes>
+        {/* <Route path="/" element={<AdminHeader />}></Route> */}
         <Route
-          path="/"
+          path="goods/list"
           element={<Goods dbService={dbService} imageService={imageService} />}
-        />
-        <Route path="/header" element={<Header />} />
+        ></Route>
+        <Route
+          path="goods/new"
+          element={
+            <GoodsAddForm dbService={dbService} imageService={imageService} />
+          }
+        ></Route>
+
+        {/* <Route path="/" element={<Header />}></Route> */}
       </Routes>
       <Footer />
     </BrowserRouter>

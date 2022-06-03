@@ -1,10 +1,10 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import styles from "./imageButton.module.css";
-import ImageButtonList from "./imageButtonList";
 
-const ImageButton = ({ imageService, name, uploadImage }) => {
+const ImageButton = ({ imageService, name, uploadImage, size }) => {
   const fileRef = useRef();
   const loading = useState(false);
+  // const buttonSize = size === "10" ? styles.size_10 : styles.size_8;
 
   const onButtonClick = (event) => {
     event.preventDefault();
@@ -19,9 +19,27 @@ const ImageButton = ({ imageService, name, uploadImage }) => {
     uploadImage(file);
   };
 
+  const getButtonSize = () => {
+    switch (size) {
+      case "10":
+        return styles.size_10;
+
+      case "8":
+        return styles.size_8;
+
+      case "6":
+        return styles.size_6;
+
+      default:
+        return styles.size_10;
+    }
+  };
+
+  const buttonSize = getButtonSize();
+
   return (
-    <div className={styles.container}>
-      <ul>
+    <div>
+      <ul className={`${buttonSize} ${styles.margin_auto}`}>
         <li>
           <input
             ref={fileRef}

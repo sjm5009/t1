@@ -20,9 +20,22 @@ class DbService {
       });
   }
 
-  saveGoodsInfo(goods) {
+  saveGoodsList(goods) {
     console.log(goods);
-    set(ref(this.db, "goods/" + goods.goodsId), goods)
+    set(ref(this.db, `goods/all/${goods.goodsId}`), goods)
+      .then(() => {
+        // Data saved successfully!
+        alert("Data saved successfully!");
+      })
+      .catch((error) => {
+        // The write failed...
+        alert("The write failed...");
+      });
+  }
+
+  saveGoodsCateList(goods) {
+    console.log(goods);
+    set(ref(this.db, `goods/${goods.category}/${goods.goodsId}`), goods)
       .then(() => {
         // Data saved successfully!
         alert("Data saved successfully!");
@@ -34,7 +47,7 @@ class DbService {
   }
 
   readGoods(onUpdate) {
-    const starCountRef = ref(this.db, "goods/");
+    const starCountRef = ref(this.db, "goods/all/");
     onValue(starCountRef, (snapshot) => {
       const data = snapshot.val();
       onUpdate(data);

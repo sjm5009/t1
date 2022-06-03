@@ -27,7 +27,7 @@ const Header = (props) => {
           </ul>
           <div className={style.cartSection}>
             <img
-              src="../img/cart/cart-solid.png"
+              src="img/cart/cart-solid.png"
               alt="cart"
               className={style.cart}
             />
