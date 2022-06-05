@@ -1,10 +1,12 @@
 .wrap {
-  margin: auto;
-  width: 1400px;
-  background-color: antiquewhite;
+  background-color: rgb(0, 0, 0, 0.9);
+  padding-bottom: 50px;
 }
 
 .container {
+  margin: auto;
+  width: 1400px;
+  /* background-color: rgb(0, 0, 0, 0.7); */
   list-style: none;
   display: grid;
   justify-items: center;

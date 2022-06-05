@@ -23,8 +23,8 @@ const Goods = ({ dbService, imageService }) => {
 
   return (
     <>
-      <AdminHeader />
       <div className={styles.wrap}>
+      <AdminHeader />
         {/* <GoodsAddForm
         dbService={dbService}
         imageService={imageService}

@@ -4,6 +4,7 @@ header {
   /* position: relative; */
   display: flex;
   justify-content: center;
+  padding: 20px 0;
 }
 
 .logo {
@@ -20,7 +21,7 @@ header {
 nav {
   display: inline-block;
   position: absolute;
-  top: 65px;
+  top: 85px;
   margin-top: -22px;
   right: 100px;
 }

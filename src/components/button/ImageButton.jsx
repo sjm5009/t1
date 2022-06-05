@@ -3,8 +3,7 @@ import styles from "./imageButton.module.css";
 
 const ImageButton = ({ imageService, name, uploadImage, size }) => {
   const fileRef = useRef();
-  const loading = useState(false);
-  // const buttonSize = size === "10" ? styles.size_10 : styles.size_8;
+  const [loading, setLoading] = useState(false);
 
   const onButtonClick = (event) => {
     event.preventDefault();
@@ -12,11 +11,13 @@ const ImageButton = ({ imageService, name, uploadImage, size }) => {
   };
 
   const onInputChange = async (event) => {
+    setLoading(true);
     console.log(event.target.files[0]);
     const files = document.querySelector("[type=file]").files;
     let file = await imageService.upload(files);
     console.log(file);
     uploadImage(file);
+    setLoading(false);
   };
 
   const getButtonSize = () => {
@@ -40,23 +41,32 @@ const ImageButton = ({ imageService, name, uploadImage, size }) => {
   return (
     <div>
       <ul className={`${buttonSize} ${styles.margin_auto}`}>
-        <li>
-          <input
-            ref={fileRef}
-            type="file"
-            accept="image/*"
-            className={styles.input}
-            onChange={onInputChange}
-          />
-          <button
-            type="button"
-            className={styles.button}
-            onClick={onButtonClick}
-            name="imgButton"
-          >
-            {name}
-          </button>
-        </li>
+        {!loading && (
+          <li>
+            <input
+              ref={fileRef}
+              type="file"
+              accept="image/*"
+              className={styles.input}
+              onChange={onInputChange}
+            />
+            <button
+              type="button"
+              className={styles.button}
+              onClick={onButtonClick}
+              name="imgButton"
+            >
+              {name}
+            </button>
+          </li>
+        )}
+        {loading && (
+          <li>
+            <button className={styles.loading_section}>
+              <div className={styles.loading}></div>
+            </button>
+          </li>
+        )}
       </ul>
     </div>
   );
