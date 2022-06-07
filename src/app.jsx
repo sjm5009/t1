@@ -9,6 +9,7 @@ import ImageService from "./service/ImageSerivece";
 import Goods from "./components/goods/goods";
 import Footer from "./components/footer/footer";
 import GoodsAddForm from "./components/goods_add_form/goods_add_form";
+import AdminLogin from "./components/admin/login/admin_login";
 
 const dbService = new DbService();
 const authService = new AuthService();
@@ -28,22 +29,35 @@ function App() {
 
   return (
     <BrowserRouter>
+      {/* <div id="wrap"> */}
       <Routes>
-        {/* <Route path="/" element={<AdminHeader />}></Route> */}
         <Route
-          path="goods/list"
-          element={<Goods dbService={dbService} imageService={imageService} />}
+          path="/"
+          element={
+            <AdminLogin dbService={dbService} authService={authService} />
+          }
         ></Route>
+
         <Route
-          path="goods/new"
+          path="/goods/list"
+          element={
+            <Goods
+              dbService={dbService}
+              imageService={imageService}
+              authService={authService}
+            />
+          }
+        ></Route>
+
+        <Route
+          path="/goods/new"
           element={
             <GoodsAddForm dbService={dbService} imageService={imageService} />
           }
         ></Route>
-
-        {/* <Route path="/" element={<Header />}></Route> */}
       </Routes>
       <Footer />
+      {/* </div> */}
     </BrowserRouter>
   );
 }

@@ -32,8 +32,7 @@ const GoodsAddForm = ({ dbService, imageService }) => {
 
     await dbService.saveGoodsList(tempGoods);
     await dbService.saveGoodsCateList(tempGoods);
-    navigation("/goods/list", { state: { goods: tempGoods } });
-    // saveGoods(tempGoods);
+    navigation("/list", { state: { goods: tempGoods } });
   };
 
   const uploadImage = (fileInfo) => {
