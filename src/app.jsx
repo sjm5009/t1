@@ -37,19 +37,21 @@ function App() {
     authService.signInWithPopup();
   };
 
-  const setUserInfo = (user) => {
-    console.log(user);
-    if (user) {
-      setUser(user);
-    } else {
-      setUser({});
-    }
-  };
+  useEffect(() => {
+    authService.onAuthChanged((data) => {
+      if (data) {
+        setUser({ uid: data.uid, email: data.email });
+      } else {
+        // User is signed out
+        setUser({});
+      }
+    });
+  }, [user.uid, authService]);
 
   return (
     <BrowserRouter>
       {/* <div id="wrap"> */}
-      <AdminHeader authService={authService} setUserInfo={setUserInfo} />
+      <AdminHeader authService={authService} user={user} />
       <Routes>
         <Route
           path="/"
@@ -60,13 +62,7 @@ function App() {
 
         <Route
           path="/goods/list"
-          element={
-            <Goods
-              dbService={dbService}
-              imageService={imageService}
-              setUserInfo={setUserInfo}
-            />
-          }
+          element={<Goods dbService={dbService} imageService={imageService} />}
         ></Route>
 
         <Route

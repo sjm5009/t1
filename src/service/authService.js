@@ -3,6 +3,7 @@ import {
   signInWithPopup,
   GithubAuthProvider,
   GoogleAuthProvider,
+  onAuthStateChanged,
   signOut,
 } from "firebase/auth";
 
@@ -42,15 +43,14 @@ class AuthService {
     return await obj;
   }
 
+  onAuthChanged(onUserChange) {
+    onAuthStateChanged(this.auth, (user) => {
+      onUserChange(user);
+    });
+  }
+
   signOut() {
-    signOut(this.auth)
-      .then(() => {
-        // Sign-out successful.
-      })
-      .catch((error) => {
-        // An error happened.
-        alert("Logout Error");
-      });
+    signOut(this.auth);
   }
 }
 

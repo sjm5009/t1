@@ -25,7 +25,7 @@ class DbService {
     set(ref(this.db, `goods/all/${goods.goodsId}`), goods)
       .then(() => {
         // Data saved successfully!
-        alert("Data saved successfully!");
+        // alert("Data saved successfully!");
       })
       .catch((error) => {
         // The write failed...
@@ -38,7 +38,7 @@ class DbService {
     set(ref(this.db, `goods/${goods.category}/${goods.goodsId}`), goods)
       .then(() => {
         // Data saved successfully!
-        alert("Data saved successfully!");
+        // alert("Data saved successfully!");
       })
       .catch((error) => {
         // The write failed...

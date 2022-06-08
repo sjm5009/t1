@@ -9,9 +9,11 @@ const GoodsList = ({ goods }) => {
         <a>
           <div className={styles.container}>
             <img src={goods.fileUrl} alt="" />
-            <p>상품명 {goods.title}</p>
-            <p>가격 {goods.price}</p>
-            <p>설명 {goods.desc}</p>
+            <div className={styles.content}>
+              <p>상품명 {goods.title}</p>
+              <p>가격 {goods.price}</p>
+              <p>{goods.desc}</p>
+            </div>
           </div>
         </a>
       </li>

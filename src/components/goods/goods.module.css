@@ -12,7 +12,14 @@
   display: grid;
   justify-items: center;
   grid-template-columns: repeat(3, 1fr);
-  overflow-y: scroll;
-  height: 70vh;
+  height: 69.38vh;
   padding-bottom: 50px;
+}
+
+.scroll {
+  overflow-y: scroll;
+}
+
+.none_scroll {
+  overflow-y: hidden;
 }

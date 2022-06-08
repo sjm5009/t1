@@ -2,7 +2,7 @@ import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import styles from "./admin_header.module.css";
 
-const AdminHeader = ({ authService, setUserInfo }) => {
+const AdminHeader = ({ authService, user }) => {
   const navigation = useNavigate();
   const location = useLocation();
   const path = location.pathname.split("/")[2];
@@ -32,16 +32,14 @@ const AdminHeader = ({ authService, setUserInfo }) => {
 
   const btnName = getButtonAttrSetting();
   const btnClickPath = getButtonPathSetting();
-  console.log(btnClickPath);
 
   const onClick = () => {
-    navigation(btnClickPath);
+    navigation(btnClickPath, { state: { user } });
   };
 
   const onLogout = () => {
     authService.signOut();
     navigation("/");
-    setUserInfo();
   };
 
   return (

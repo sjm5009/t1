@@ -1,11 +1,12 @@
 import React, { useState, useRef } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import AdminHeader from "../admin/header/admin_header";
 import ImageButton from "../button/ImageButton";
 import styles from "./goods_add_form.module.css";
 
 const GoodsAddForm = ({ dbService, imageService }) => {
   const navigation = useNavigate();
+  const location = useLocation();
 
   let titleRef = useRef();
   let priceRef = useRef();
@@ -33,11 +34,12 @@ const GoodsAddForm = ({ dbService, imageService }) => {
       filePublicId: file.filePublicId || "",
       fileUrl: file.fileUrl || "",
       fileName: file.fileName || "",
+      writer: location.state.user.uid || "",
     };
 
     await dbService.saveGoodsList(tempGoods);
     await dbService.saveGoodsCateList(tempGoods);
-    navigation("/list", { state: { goods: tempGoods } });
+    navigation("/goods/list", { state: { goods: tempGoods } });
   };
 
   const uploadImage = (fileInfo) => {
