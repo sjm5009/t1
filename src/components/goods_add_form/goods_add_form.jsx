@@ -12,7 +12,11 @@ const GoodsAddForm = ({ dbService, imageService }) => {
   let cateRef = useRef();
   let descRef = useRef();
   let formRef = useRef();
-  let [file, setFile] = useState({ filePublicId: null, fileUrl: null });
+  let [file, setFile] = useState({
+    filePublicId: null,
+    fileUrl: null,
+    fileNmae: null,
+  });
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -28,6 +32,7 @@ const GoodsAddForm = ({ dbService, imageService }) => {
       desc: descRef.current.value || "",
       filePublicId: file.filePublicId || "",
       fileUrl: file.fileUrl || "",
+      fileName: file.fileName || "",
     };
 
     await dbService.saveGoodsList(tempGoods);
@@ -39,6 +44,7 @@ const GoodsAddForm = ({ dbService, imageService }) => {
     const file = {
       filePublicId: fileInfo.filePublicId,
       fileUrl: fileInfo.fileUrl,
+      fileName: fileInfo.fileName,
     };
     setFile(file);
   };
@@ -46,7 +52,6 @@ const GoodsAddForm = ({ dbService, imageService }) => {
   return (
     <>
       <div className={styles.wrap}>
-        <AdminHeader />
         <section className={styles.section}>
           <form onSubmit={onSubmit} ref={formRef}>
             <input
@@ -74,7 +79,7 @@ const GoodsAddForm = ({ dbService, imageService }) => {
             <div id="upload_section" className={styles.buttonArea}>
               <ImageButton
                 imageService={imageService}
-                name="파일 선택"
+                name={file.fileName || "파일 선택"}
                 uploadImage={uploadImage}
                 size="8"
               />

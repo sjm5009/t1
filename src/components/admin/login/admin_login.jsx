@@ -10,7 +10,6 @@ const AdminLogin = ({ dbService, authService }) => {
     let loginMtd = e.target.textContent;
     authService.checkProvider(loginMtd);
     let result = await authService.signInWithPopup();
-    console.log(result);
     goToGoodsList(result);
   };
 
@@ -21,7 +20,6 @@ const AdminLogin = ({ dbService, authService }) => {
   return (
     <>
       <div className={styles.wrap}>
-        <AdminHeader />
         <section className={styles.container}>
           <ul className={styles.buttons}>
             <li>
@@ -29,6 +27,9 @@ const AdminLogin = ({ dbService, authService }) => {
             </li>
             <li>
               <button onClick={onLogin}>Github</button>
+            </li>
+            <li>
+              <button onClick={onLogin}>Google</button>
             </li>
           </ul>
         </section>

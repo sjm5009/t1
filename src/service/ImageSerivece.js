@@ -8,10 +8,11 @@ class ImageService {
   async upload(files) {
     const formData = new FormData();
     let result = new Object();
+    let fileName;
 
     for (let i = 0; i < files.length; i++) {
       let file = files[i];
-      console.log(file);
+      fileName = files[i].name;
       formData.append("file", file);
       formData.append("upload_preset", this.UNSINGNED_UPLOAD_PRESET);
       const url = `https://api.cloudinary.com/v1_1/${this.CLOUD_NAME}/image/upload`;
@@ -24,7 +25,11 @@ class ImageService {
           return returnData;
         })
         .then((data) => {
-          result = { filePublicId: data.public_id, fileUrl: data.url };
+          result = {
+            filePublicId: data.public_id,
+            fileUrl: data.url,
+            fileName: fileName,
+          };
         });
     }
 

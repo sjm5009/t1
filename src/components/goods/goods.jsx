@@ -5,9 +5,8 @@ import GoodsAddForm from "../goods_add_form/goods_add_form";
 import GoodsList from "../goods_list/goods_list";
 import styles from "./goods.module.css";
 
-const Goods = ({ dbService, imageService, authService }) => {
+const Goods = ({ dbService, imageService, setUserInfo }) => {
   const location = useLocation().state;
-  const [user, setUser] = useState({});
   const [goods, setGoods] = useState({});
 
   const saveGoods = (goodsInfo) => {
@@ -26,13 +25,12 @@ const Goods = ({ dbService, imageService, authService }) => {
 
   useEffect(() => {
     console.log(location);
-    setUser(location.user);
-  }, [authService]);
+    if (location) setUserInfo(location.user);
+  }, []);
 
   return (
     <>
       <div className={styles.wrap}>
-        <AdminHeader />
         <div className={styles.divwrap}>
           <ul className={styles.container}>
             {!goods ||
