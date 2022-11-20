@@ -1,12 +1,12 @@
 import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import styles from "./admin_header.module.css";
+import styles from "./admin_header.css";
 
 const AdminHeader = ({ authService, user }) => {
   const navigation = useNavigate();
   const location = useLocation();
   const path = location.pathname.split("/")[2];
-  const buttonStyle = location.pathname === "/" ? styles.none : styles.block;
+  const buttonStyle = location.pathname === "/" ? "none" : "block";
 
   const getButtonAttrSetting = () => {
     switch (path) {
@@ -30,6 +30,10 @@ const AdminHeader = ({ authService, user }) => {
     }
   };
 
+  const getButtonDisplayStyle = (e) => {
+    document.querySelector("#button_wrap").classList.toggle("active");
+  };
+
   const btnName = getButtonAttrSetting();
   const btnClickPath = getButtonPathSetting();
 
@@ -44,17 +48,22 @@ const AdminHeader = ({ authService, user }) => {
 
   return (
     <header>
-      <div className={styles.logo}>
-        <img src="/assets/logo.png" alt="" />
+      <div className="logo">
+        <a
+          onClick={() => {
+            navigation("/goods/list");
+          }}
+        >
+          <img src="/assets/logo.png" alt="" />
+        </a>
       </div>
       <nav>
-        <ul>
-          <li className={buttonStyle} onClick={onClick}>
-            {btnName}
-          </li>
-          <li className={buttonStyle} onClick={onLogout}>
-            Logout
-          </li>
+        <div className="menu">
+          <img onClick={getButtonDisplayStyle} src="/assets/menu_icon.png" alt="" />
+        </div>
+        <ul id="button_wrap" className={`button_wrap ${buttonStyle}`}>
+          <li onClick={onClick}>{btnName}</li>
+          <li onClick={onLogout}>Logout</li>
         </ul>
       </nav>
     </header>

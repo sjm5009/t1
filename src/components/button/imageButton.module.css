@@ -1,7 +1,6 @@
 .input {
   display: none;
 }
-
 .button {
   width: 100%;
   background-color: white;
@@ -10,39 +9,31 @@
   border: 0;
   outline: 0;
 }
-
 .size_10 {
   width: 100%;
 }
-
 .size_8 {
   width: 80%;
 }
-
 .size_6 {
   width: 60%;
 }
-
 .margin_auto {
   margin: 0 auto;
 }
-
 .button {
   height: 44px;
 }
-
 .button:hover {
   cursor: pointer;
   opacity: 0.5;
 }
-
 .loading_section {
   background-color: pink;
   width: 100%;
   border: 0;
   outline: 0;
 }
-
 .loading {
   margin: auto;
   width: 18px;

@@ -4,7 +4,6 @@
   flex-direction: column;
   background-color: rgb(0, 0, 0, 0.9);
 }
-
 .container {
   margin: 0 auto;
   min-height: 0;
@@ -15,11 +14,23 @@
   height: 69.38vh;
   padding-bottom: 50px;
 }
-
 .scroll {
   overflow-y: scroll;
 }
-
 .none_scroll {
   overflow-y: hidden;
+}
+
+@media screen and (max-width: 1369px) and (min-width: 900px) {
+  .container {
+    width: 90%;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 899px) {
+  .container {
+    width: 90%;
+    grid-template-columns: repeat(1, 1fr);
+  }
 }

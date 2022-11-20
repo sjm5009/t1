@@ -2,14 +2,7 @@ import "./app.css";
 import Header from "./components/header/header";
 import { app } from "./service/firebaseConfig";
 import React, { useState, useRef, useEffect } from "react";
-import {
-  BrowserRouter,
-  Routes,
-  Route,
-  Link,
-  useLocation,
-  useNavigate,
-} from "react-router-dom";
+import { BrowserRouter, Routes, Route, Link, useLocation, useNavigate } from "react-router-dom";
 import DbService from "./service/realtimeService";
 import AuthService from "./service/authService";
 import ImageService from "./service/ImageSerivece";
@@ -26,7 +19,6 @@ function App() {
   const [user, setUser] = useState({});
 
   const saveGoods = (goods) => {
-    console.log(goods);
     dbService.saveGoodsInfo(goods);
   };
 
@@ -50,30 +42,17 @@ function App() {
 
   return (
     <BrowserRouter>
-      {/* <div id="wrap"> */}
-      <AdminHeader authService={authService} user={user} />
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <AdminLogin dbService={dbService} authService={authService} />
-          }
-        ></Route>
+      <div id="wrap">
+        <AdminHeader authService={authService} user={user} />
+        <Routes>
+          <Route path="/" element={<AdminLogin dbService={dbService} authService={authService} />}></Route>
 
-        <Route
-          path="/goods/list"
-          element={<Goods dbService={dbService} imageService={imageService} />}
-        ></Route>
+          <Route path="/goods/list" element={<Goods dbService={dbService} imageService={imageService} />}></Route>
 
-        <Route
-          path="/goods/new"
-          element={
-            <GoodsAddForm dbService={dbService} imageService={imageService} />
-          }
-        ></Route>
-      </Routes>
-      <Footer />
-      {/* </div> */}
+          <Route path="/goods/new" element={<GoodsAddForm dbService={dbService} imageService={imageService} />}></Route>
+        </Routes>
+        <Footer />
+      </div>
     </BrowserRouter>
   );
 }

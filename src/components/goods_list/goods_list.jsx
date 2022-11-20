@@ -2,16 +2,20 @@ import React from "react";
 import { Route } from "react-router-dom";
 import styles from "./goods_list.module.css";
 
-const GoodsList = ({ goods }) => {
+const GoodsList = ({ goodsId, goods, openPopup }) => {
+  const onGoodsPopup = (e) => {
+    openPopup(e.currentTarget.id, true);
+  };
+
   return (
     <>
-      <li>
-        <a>
+      <li className={styles.li}>
+        <a id={`${goodsId}_${goods.category}`} onClick={onGoodsPopup}>
           <div className={styles.container}>
             <img src={goods.fileUrl} alt="" />
             <div className={styles.content}>
-              <p>상품명 {goods.title}</p>
-              <p>가격 {goods.price}</p>
+              <p>{goods.title}</p>
+              <p>{goods.price}</p>
               <p>{goods.desc}</p>
             </div>
           </div>

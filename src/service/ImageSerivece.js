@@ -1,7 +1,6 @@
 class ImageService {
   constructor() {
-    this.UNSINGNED_UPLOAD_PRESET =
-      process.env.REACT_APP_T1_SHOP_CLOUDINARY_PRESET;
+    this.UNSINGNED_UPLOAD_PRESET = process.env.REACT_APP_T1_SHOP_CLOUDINARY_PRESET;
     this.CLOUD_NAME = process.env.REACT_APP_T1_SHOP_CLOUDINARY_CLOUD_NAME;
   }
 

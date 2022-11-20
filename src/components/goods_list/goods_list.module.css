@@ -1,19 +1,35 @@
+.li {
+  display: inline-block;
+  margin-top: 70px;
+}
 .container {
-  width: 300px;
+  width: 350px;
   height: 450px;
   display: flex;
   flex-direction: column;
-  padding-top: 70px;
+  /* padding-top: 70px; */
   align-items: center;
   margin: 0 20px;
   color: white;
 }
-
 .container img {
   width: 100%;
-  height: 100%;
+  height: 80%;
 }
-
 .content {
   margin-top: 5%;
+}
+.container:hover {
+  text-decoration: underline;
+}
+
+@media screen and (max-width: 1369px) and (min-width: 1121px) {
+  .container {
+    width: 50vh;
+  }
+}
+@media screen and (max-width: 1120px) {
+  .container {
+    width: 90%;
+  }
 }

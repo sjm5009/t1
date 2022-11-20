@@ -1,0 +1,79 @@
+.popup_active {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.popup_none {
+  display: none;
+}
+.modal {
+  width: 70%;
+  height: 75%;
+  background-color: #e2012d;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.item {
+  width: 100%;
+  margin-bottom: 20px;
+}
+.item:last-child .label {
+  margin-bottom: 20px;
+}
+.item ul {
+  width: 70%;
+}
+.label {
+  text-align: center;
+  font-size: 20px;
+}
+.label,
+.input,
+.select,
+.textarea {
+  display: block;
+  margin-top: 0;
+  background-color: transparent;
+  margin: auto;
+  outline: none;
+  font-family: "Montserrat", "Noto Sans KR";
+  padding: 5px 10px;
+  box-sizing: border-box;
+  color: #ddd;
+  border-color: #ddd;
+}
+.input,
+select {
+  width: 70%;
+  height: 40px;
+}
+.select option {
+  color: #aaa;
+}
+.file_item {
+  margin-top: 10px;
+}
+.textarea {
+  width: 70%;
+  border-color: #ddd;
+}
+.button {
+  border: none;
+  outline: none;
+  background-color: #000;
+  width: 70%;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+.button:hover {
+  background-color: rgb(122, 94, 94);
+}

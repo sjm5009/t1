@@ -21,9 +21,7 @@ const GoodsAddForm = ({ dbService, imageService }) => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-
-    if (cateRef.current.value === "NONE")
-      return alert("카테고리를 선택하세요.");
+    if (cateRef.current.value === "NONE") return alert("카테고리를 선택하세요.");
 
     const tempGoods = {
       goodsId: Date.now(),
@@ -39,7 +37,7 @@ const GoodsAddForm = ({ dbService, imageService }) => {
 
     await dbService.saveGoodsList(tempGoods);
     await dbService.saveGoodsCateList(tempGoods);
-    navigation("/goods/list", { state: { goods: tempGoods } });
+    navigation("/goods/list", { state: { ...location.state, goods: tempGoods } });
   };
 
   const uploadImage = (fileInfo) => {
@@ -56,12 +54,7 @@ const GoodsAddForm = ({ dbService, imageService }) => {
       <div className={styles.wrap}>
         <section className={styles.section}>
           <form onSubmit={onSubmit} ref={formRef}>
-            <input
-              ref={titleRef}
-              type="text"
-              name="title"
-              placeholder="상품명"
-            />
+            <input ref={titleRef} type="text" name="title" placeholder="상품명" />
             <input ref={priceRef} type="text" name="price" placeholder="가격" />
             <select ref={cateRef} name="category">
               <option value="NONE">카테고리 선택</option>
@@ -70,19 +63,13 @@ const GoodsAddForm = ({ dbService, imageService }) => {
               <option value="COLLECTIBLES">COLLECTIBLES</option>
               <option value="COLLABORATION">COLLABORATION</option>
             </select>
-            <textarea
-              ref={descRef}
-              type="text"
-              name="desc"
-              placeholder="상품 상세 설명"
-              rows="6"
-            />
-
+            <textarea ref={descRef} type="text" name="desc" placeholder="상품 상세 설명" rows="6" />
             <div id="upload_section" className={styles.buttonArea}>
               <ImageButton
                 imageService={imageService}
-                name={file.fileName || "파일 선택"}
                 uploadImage={uploadImage}
+                file={file}
+                name={file.fileName || "파일 선택"}
                 size="8"
               />
               <button onClick={onSubmit} className={styles.button}>
