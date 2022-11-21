@@ -58,7 +58,7 @@ const AdminHeader = ({ authService, user }) => {
         </a>
       </div>
       <nav>
-        <div className="menu">
+        <div className={`menu ${buttonStyle}`}>
           <img onClick={getButtonDisplayStyle} src="/assets/menu_icon.png" alt="" />
         </div>
         <ul id="button_wrap" className={`button_wrap ${buttonStyle}`}>

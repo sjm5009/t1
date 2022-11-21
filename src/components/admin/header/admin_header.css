@@ -24,7 +24,10 @@ nav {
   vertical-align: middle;
 }
 .menu {
-  display: none;
+  width: 0;
+  height: 0;
+  opacity: 0;
+  visibility: hidden;
 }
 .button_wrap {
   display: inline-block;
@@ -59,12 +62,13 @@ nav {
     right: 60px;
   }
   .menu {
-    display: block;
     width: 40px;
     height: 40px;
     position: absolute;
     top: 0;
     right: 23px;
+    opacity: 1;
+    visibility: visible;
     cursor: pointer;
   }
   .menu img {
@@ -102,12 +106,13 @@ nav {
     right: 10vw;
   }
   .menu {
-    display: block;
     position: absolute;
     width: 35px;
     height: 35px;
     top: 0;
     right: 5vw;
+    opacity: 1;
+    visibility: visible;
     cursor: pointer;
   }
   .menu img {
